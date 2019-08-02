@@ -1,0 +1,58 @@
+<div class="row p-2">
+  <div class="col"><h4>Update</h4></div>
+</div>
+<div class="row p-2">
+  <div class="col">
+    <form
+      #ArtistUpdateForm="ngForm"
+      (ngSubmit)="onSubmit(ArtistUpdateForm.value)"
+    >
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          type="text"
+          [(ngModel)]="artist.id"
+          #id="ngModel"
+          name="id"
+          class="form-control"
+          required
+        />
+        <div [hidden]="id.valid || id.pristine" class="alert alert-danger">
+          ID is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="id">Name</label>
+        <input
+          type="text"
+          [(ngModel)]="artist.name"
+          name="name"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="id">Image</label>
+        <input
+          type="text"
+          [(ngModel)]="artist.image"
+          name="image"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea
+          class="form-control"
+          required
+          [(ngModel)]="artist.description"
+          name="description"
+          rows="3"
+        ></textarea>
+      </div>
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+</div>

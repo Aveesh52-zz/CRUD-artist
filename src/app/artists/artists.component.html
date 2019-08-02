@@ -1,0 +1,38 @@
+<div class="row px-3">
+  <input
+    class="form-control mr-sm-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="searchArtistByName"
+  />
+</div>
+<div class="row p-3">
+  <div
+    class="col-md-3 col-lg-3"
+    *ngFor="let n of (artistList | searchArtists: searchArtistByName)"
+  >
+    <div class="card mt-3">
+      <img
+        class="card-img-top"
+        [src]="n.image"
+        alt="Card image cap"
+        width="200px"
+        height="200px"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ n.name }}</h5>
+        <p class="card-text">
+          {{ n.description }}
+        </p>
+        <div class="float-md-right">
+          <i
+            class="fas fa-pencil-alt px-3 text-primary"
+            routerLink="/update/{{ n.id }}"
+          ></i>
+          <i class="fas fa-trash-alt text-danger" (click)="onDelete(n.id)"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
